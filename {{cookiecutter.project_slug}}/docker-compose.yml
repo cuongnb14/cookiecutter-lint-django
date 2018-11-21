@@ -1,0 +1,28 @@
+
+version: "3"
+
+services:
+
+    {{cookiecutter.project_slug}}:
+        #restart: always
+        build: .
+        image: {{cookiecutter.project_slug}}:{{cookiecutter.version}}
+        networks:
+            - {{cookiecutter.project_slug}}
+        ports:
+            - "0.0.0.0:8000:8000"
+        volumes:
+            - ./:/usr/src/app
+        hostname: {{cookiecutter.project_slug}}
+        environment:
+            DJANGO_SETTINGS_MODULE: 'config.settings.base'
+        # command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000
+#        command: python3 manage.py runserver 0.0.0.0:8000
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "100M"
+                max-file: "3"
+
+networks:
+    {{cookiecutter.project_slug}}:
