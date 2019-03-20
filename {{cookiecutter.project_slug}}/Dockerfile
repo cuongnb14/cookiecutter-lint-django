@@ -3,7 +3,7 @@
 # Build: docker build -t {{cookiecutter.project_slug}}:{{cookiecutter.version}} .
 #
 
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 LABEL maintainer="cuongnb14@gmail.com"
 
 RUN apt-get update -qq
