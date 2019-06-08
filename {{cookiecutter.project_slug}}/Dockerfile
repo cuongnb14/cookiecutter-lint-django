@@ -8,18 +8,18 @@ LABEL maintainer="cuongnb14@gmail.com"
 
 RUN apt-get update -qq
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip build-essential python3-dev \
-    libmysqlclient-dev libxml2-dev libxslt1-dev libssl-dev libffi-dev
-
 RUN apt-get install locales && locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 
-WORKDIR /usr/src/app
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip build-essential python3-dev \
+    libmysqlclient-dev libxml2-dev libxslt1-dev libssl-dev libffi-dev
 
-COPY requirements.txt /usr/src/app/requirements.txt
-RUN pip3 install -r /usr/src/app/requirements.txt
+WORKDIR /app
 
-COPY . /usr/src/app
+COPY requirements.txt /app/requirements.txt
+RUN pip3 install -r /app/requirements.txt
+
+COPY . /app
 
 EXPOSE 8000
 
