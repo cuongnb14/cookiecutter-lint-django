@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', RedirectView.as_view(url="/dashboard/"), name='home'),
@@ -24,3 +25,5 @@ urlpatterns = [
 
     path('dashboard/', include(('{{cookiecutter.project_slug}}.dashboard.urls', 'dashboard'), namespace='dashboard')),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
