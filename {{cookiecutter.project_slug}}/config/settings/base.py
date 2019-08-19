@@ -135,6 +135,8 @@ STATICFILES_FINDERS = [
 
 # Config Logging
 # ------------------------------------------------------------------------------
+LOG_DIR = env("LOG_DIR", default=str(BASE_DIR.path('logs')))
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -153,7 +155,7 @@ LOGGING = {
         'apps-file': {
             'level': 'INFO',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': 'logs/apps.log',
+            'filename': LOG_DIR + '/apps.log',
             'formatter': 'verbose',
             'when': 'D',
             'backupCount': 3,
@@ -161,7 +163,7 @@ LOGGING = {
         'django-file': {
             'level': 'WARNING',
             'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': 'logs/django.log',
+            'filename': LOG_DIR + '/django.log',
             'formatter': 'verbose',
             'when': 'D',
             'backupCount': 3,

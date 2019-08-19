@@ -108,5 +108,6 @@ venv.bak/
 dbs/*
 logs/*
 {{cookiecutter.project_slug}}/static/material
+staticfiles/
 
 !**.gitkeep

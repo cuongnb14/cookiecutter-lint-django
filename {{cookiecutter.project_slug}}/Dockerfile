@@ -14,6 +14,9 @@ ENV LANG en_US.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip build-essential python3-dev \
     libmysqlclient-dev libxml2-dev libxslt1-dev libssl-dev libffi-dev
 
+RUN mkdir /logs
+ENV LOG_DIR /logs
+
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
