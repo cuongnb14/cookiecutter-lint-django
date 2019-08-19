@@ -102,8 +102,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.idea/
+.vscode/
 
 dbs/*
 logs/*
+{{cookiecutter.project_slug}}/static/material
 
 !**.gitkeep
