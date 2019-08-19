@@ -7,7 +7,7 @@ This cookie cutter is a very simple boilerplate for starting a website using Dja
 
 ### Features:
 
-- For django 2.1.7
+- For django 2.2.4
 - Docker support using docker-compose
 - SQLite DB
 - Integrate material template
