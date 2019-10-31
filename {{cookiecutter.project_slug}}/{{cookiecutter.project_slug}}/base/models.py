@@ -16,7 +16,7 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-def execute_sql(sql, params=None, keys=None, fetchone=False):
+def execute_sql(sql, params=None, fetchone=False):
     with connection.cursor() as cursor:
         if params:
             cursor.execute(sql, params)
@@ -25,14 +25,9 @@ def execute_sql(sql, params=None, keys=None, fetchone=False):
 
         if fetchone:
             rows = cursor.fetchone()
+            return rows
         else:
-            rows = cursor.fetchall()
-
-        if keys:
-            result = []
-            for row in rows:
-                data = dict(zip(keys, row))
-                result.append(data)
-            return result
-
-        return rows
+            columns = [col[0] for col in cursor.description]
+            return [
+                dict(zip(columns, row))
+                for row in cursor.fetchall()
