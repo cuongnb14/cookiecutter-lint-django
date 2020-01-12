@@ -31,3 +31,4 @@ def execute_sql(sql, params=None, fetchone=False):
             return [
                 dict(zip(columns, row))
                 for row in cursor.fetchall()
+            ]
