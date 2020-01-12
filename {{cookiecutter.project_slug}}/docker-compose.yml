@@ -1,5 +1,26 @@
+version: '2.4'
 
-version: "3"
+x-default: &default
+    networks:
+        - {{cookiecutter.project_slug}}-net
+    # cpus: 0.5
+    # mem_limit: 500M
+    restart: always
+    # init: true
+    # privileged: true
+    # stdin_open: true
+    # tty: true
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "10M"
+            max-file: "3"
+
+volumes:
+  postgres-data:
+    
+networks:
+    {{cookiecutter.project_slug}}-net:
 
 services:
 
@@ -11,18 +32,26 @@ services:
             - {{cookiecutter.project_slug}}
         ports:
             - "0.0.0.0:8000:8000"
-        volumes:
-            - ./:/usr/src/app
+        # volumes:
+        #     - ./:/app
         hostname: {{cookiecutter.project_slug}}
         environment:
             DJANGO_SETTINGS_MODULE: 'config.settings.base'
         # command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000
-#        command: python3 manage.py runserver 0.0.0.0:8000
-        logging:
-            driver: "json-file"
-            options:
-                max-size: "100M"
-                max-file: "3"
+        # command: python3 manage.py runserver 0.0.0.0:8000
+    
+    # postgres:
+    #     << : *default
+    #     image: postgres:10.5
+    #     container_name: pt_postgres
+    #     ports:
+    #         - "5435:5432"
+    #     volumes:
+    #         - postgres-data/:/var/lib/postgresql/data/
+    #     environment:
+    #         - POSTGRES_DB={{cookiecutter.project_slug}}
+    #         - POSTGRES_USER=prod
+    #         - POSTGRES_PASSWORD=prod
+    #     hostname: postgres
 
-networks:
-    {{cookiecutter.project_slug}}:
+
