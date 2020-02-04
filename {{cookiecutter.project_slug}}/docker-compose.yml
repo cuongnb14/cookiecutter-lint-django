@@ -18,14 +18,14 @@ x-default: &default
 
 volumes:
   postgres-data:
-    
+
 networks:
     {{cookiecutter.project_slug}}-net:
 
 services:
 
     {{cookiecutter.project_slug}}:
-        #restart: always
+        << : *default
         build: .
         image: {{cookiecutter.project_slug}}:{{cookiecutter.version}}
         networks:
