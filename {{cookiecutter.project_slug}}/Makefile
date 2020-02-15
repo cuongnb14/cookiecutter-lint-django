@@ -1,8 +1,8 @@
 build:
 	docker-compose build {{cookiecutter.project_slug}}
 
-init-material:
-	unzip material.zip -d {{cookiecutter.project_slug}}/static/
+install-coreui:
+	cd {{cookiecutter.project_slug}}/static/coreui && npm install
 
 run:
 	python3 manage.py runserver 0.0.0.0:8000

@@ -2,9 +2,9 @@
 
 {{cookiecutter.description}}
 
-## Step 1: Init material theme
+## Step 1: Install coreui theme
 
-`make init-material`
+`make install-coreui`
 
 ## Step 2: Run
 
