@@ -3,3 +3,9 @@ django-environ==0.4.5
 gunicorn==19.9.0
 
 django-model-utils==4.0.0
+
+redis==3.4.1
+
+{%- if cookiecutter.use_celery == "y" %}
+celery==4.4.0  # pyup: < 5.0  # https://github.com/celery/celery
+{%- endif %}
