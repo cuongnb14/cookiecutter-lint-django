@@ -1,6 +1,6 @@
-# cookiecutter-lint-django
+# cookiecutter-django
 
-Powered by Cookiecutter. Cookiecutter Lint Django is a framework for jumpstarting projects quickly (to write some small web tool, ...). It is a very small version of cookiecutter-django
+Powered by Cookiecutter. Cookiecutter Django is a framework for jumpstarting projects quickly.
 
 ## Introduction
 This cookie cutter is a very simple boilerplate for starting a website using Django, Nginx, Docker, SQLite, coreui theme. It comes with basic project structure and configuration.
