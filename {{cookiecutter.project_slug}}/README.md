@@ -6,11 +6,12 @@
 
 `make install-coreui`
 
-## Step 2: Run
+## Step 2: Install requirements
+pip3 install -r requirements.txt
 
-`docker-compose up -d`
+## Step 3: Run
 
-or 
+- with docker: `docker-compose up -d`
 
-`make run`
+- without docker: `make run`
 
