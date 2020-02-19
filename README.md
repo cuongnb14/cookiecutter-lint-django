@@ -14,5 +14,5 @@ This cookie cutter is a very simple boilerplate for starting a website using Dja
 
 ### Usage
 
-`cookiecutter https://github.com/cuongnb14/cookiecutter-lint-django.git`
+`cookiecutter https://github.com/cuongnb14/cookiecutter-django.git`
 
