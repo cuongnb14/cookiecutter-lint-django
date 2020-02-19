@@ -198,8 +198,8 @@ def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
 
 
 def set_flags_in_settings_files():
-    set_django_secret_key(os.path.join("config", "settings", "local.py"))
-    set_django_secret_key(os.path.join("config", "settings", "test.py"))
+    set_django_secret_key(os.path.join("config", "settings", "base.py"))
+    # set_django_secret_key(os.path.join("config", "settings", "test.py"))
 
 
 def remove_envs_and_associated_files():
@@ -226,6 +226,8 @@ def remove_drf_starter_files():
 
 
 def main():
+    set_flags_in_settings_files()
+    
     if "{{ cookiecutter.use_celery }}".lower() == "n":
         remove_celery_files()
 

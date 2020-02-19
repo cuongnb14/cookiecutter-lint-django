@@ -24,12 +24,12 @@ APPS_DIR = BASE_DIR.path('{{cookiecutter.project_slug}}')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r2d1f)1=ftbsi$vs(#4@@ma=qq0#f!lrl)v4q-m)9kh5vfpgf7'
+SECRET_KEY = env("DJANGO_SECRET_KEY", default="!!!SET DJANGO_SECRET_KEY!!!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "*"]
 
 
 # Application definition
