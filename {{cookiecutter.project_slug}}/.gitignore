@@ -108,6 +108,8 @@ venv.bak/
 dbs/*
 logs/*
 {{cookiecutter.project_slug}}/static/material
+{{cookiecutter.project_slug}}/static/coreui/node_modules/
+
 staticfiles/
 
 !**.gitkeep
