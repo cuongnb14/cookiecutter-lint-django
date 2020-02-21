@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'sp_backend.user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'user.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -139,7 +142,7 @@ if USE_TZ:
     # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
     CELERY_TIMEZONE = TIME_ZONE
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
-CELERY_BROKER_URL = env("CELERY_BROKER_URL", "redis://127.0.0.1:6377/0")
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://127.0.0.1:6377/0")
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
@@ -158,8 +161,6 @@ CELERY_TASK_SOFT_TIME_LIMIT = 60
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 {%- endif %}
-
-
 # Config Logging
 # ------------------------------------------------------------------------------
 LOG_DIR = env("LOG_DIR", default=str(BASE_DIR.path('logs')))
