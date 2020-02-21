@@ -7,7 +7,8 @@
 `make install-coreui`
 
 ## Step 2: Install requirements
-pip3 install -r requirements.txt
+
+`pip3 install -r requirements.txt`
 
 ## Step 3: Run
 
