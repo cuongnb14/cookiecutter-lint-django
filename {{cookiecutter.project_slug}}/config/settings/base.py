@@ -86,6 +86,19 @@ DATABASES = {
     }
 }
 
+{%- if cookiecutter.use_postgres == "y" %}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME', default='{{cookiecutter.project_slug}}'),
+        'USER': env('DB_USER', default='postgres'),
+        'PASSWORD': env('DB_PASS', default='123456'),
+        'HOST': env('DB_HOST', default='127.0.0.1'),
+        'PORT': env('DB_PORT', default=5432),
+    },
+}
+{%- endif %}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
