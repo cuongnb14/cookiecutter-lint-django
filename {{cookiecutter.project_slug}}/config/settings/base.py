@@ -27,7 +27,7 @@ APPS_DIR = BASE_DIR.path('{{cookiecutter.project_slug}}')
 SECRET_KEY = env("DJANGO_SECRET_KEY", default="!!!SET DJANGO_SECRET_KEY!!!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", True)
 
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "*"]
 
