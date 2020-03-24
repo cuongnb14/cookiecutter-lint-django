@@ -4,5 +4,6 @@
     "description": "A short description of the project.",
     "use_celery": "n",
     "use_postgres": "n",
+    "use_whitenoise": "y",
     "version": "0.1.0"
 }
