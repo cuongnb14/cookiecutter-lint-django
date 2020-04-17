@@ -111,5 +111,6 @@ logs/*
 {{cookiecutter.project_slug}}/static/coreui/node_modules/
 
 staticfiles/
+media/
 
 !**.gitkeep
