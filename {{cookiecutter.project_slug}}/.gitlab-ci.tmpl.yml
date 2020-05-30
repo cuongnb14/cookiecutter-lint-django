@@ -13,7 +13,7 @@ stages:
 build_staging:
   stage: build
   script:
-  - docker build -t $IMAGE_URL:IMAGE_TAG --file=Dockerfile .
+  - docker build -t $IMAGE_URL:$IMAGE_TAG --file=Dockerfile .
 
   # remove old images version keep 2 version
   - docker images | egrep -e "$IMAGE_URL" | tail -n +3 | awk '{print $3}' | xargs -r docker rmi -f
@@ -48,7 +48,7 @@ deploy_staging:
     --label "traefik.http.routers.devapi.tls.certresolver=ssl"
     --label "traefik.http.services.devapi.loadbalancer.server.port=8000"
     --network $NETWORK
-    $IMAGE_URL:$PROD_IMAGE_TAG honcho start -f Procfile
+    $IMAGE_URL:$IMAGE_TAG honcho start -f Procfile
 
   - docker exec $CONTAINER_NAME python3 manage.py migrate
   - docker exec $CONTAINER_NAME make collectstatic
