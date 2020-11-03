@@ -3,8 +3,7 @@
 # Build: docker build -t {{cookiecutter.project_slug}}:{{cookiecutter.version}} .
 #
 
-FROM ubuntu:18.04
-LABEL maintainer="cuongnb14@gmail.com"
+FROM ubuntu:20.04
 
 RUN apt-get update -qq
 
@@ -16,6 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip build-
 
 RUN mkdir /logs
 ENV LOG_DIR /logs
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
