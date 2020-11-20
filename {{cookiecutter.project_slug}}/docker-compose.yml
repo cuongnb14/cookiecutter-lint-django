@@ -28,8 +28,6 @@ services:
         << : *default
         build: .
         image: {{cookiecutter.project_slug}}:{{cookiecutter.version}}
-        networks:
-            - {{cookiecutter.project_slug}}
         ports:
             - "0.0.0.0:8000:8000"
         # volumes:
@@ -39,6 +37,13 @@ services:
             DJANGO_SETTINGS_MODULE: 'config.settings.base'
         # command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000
         # command: python3 manage.py runserver 0.0.0.0:8000
+        labels:
+        - "traefik.enable=false"
+        - "traefik.docker.network=traefik-net"
+        - "traefik.http.routers.api.rule=Host(`example.com`)"
+        - "traefik.http.routers.api.entrypoints=https"
+        - "traefik.http.routers.api.tls.certresolver=ssl"
+        - "traefik.http.services.api.loadbalancer.server.port=8000"
     
     # postgres:
     #     << : *default
